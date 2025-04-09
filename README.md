@@ -62,3 +62,7 @@ Login functionality is expected to be added separately via the Access Control Co
 
 ## 📚 Notes
 This is a lightweight research-focused prototype. Not intended for production use or multi-user concurrency with SQLite.
+
+## Live URL:  https://project-group-4.onrender.com/
+
+## Postman link: https://.postman.co/workspace/My-Workspace~62b2f8a5-e1a4-40e8-80d7-9aa208e44dad/collection/2558201-0873ed91-36dd-4a40-8d5e-fdba16734859?action=share&creator=2558201
