@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
-from database import Base
+from backend.database import Base
 
 class ShelterUser(Base):
     __tablename__ = "users"

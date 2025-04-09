@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
-import models, schemas
+from backend import models, schemas
+
 
 def create_user(db: Session, user: schemas.UserCreate):
     db_user = models.ShelterUser(**user.dict())
