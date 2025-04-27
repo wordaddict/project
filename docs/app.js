@@ -16,8 +16,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
         localStorage.setItem('username', data.username);
         localStorage.setItem('role', data.role);
         localStorage.setItem('name', data.name);
-        
-    //   window.location.href = 'output.html';
+        window.location.href = 'output.html';
     } else {
       alert('Login failed: ' + (data.detail || 'Unknown error'));
     }
