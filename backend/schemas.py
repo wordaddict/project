@@ -40,10 +40,10 @@ class Donation(DonationBase):
     class Config: orm_mode = True
 
 class ShiftBase(BaseModel):
-    volunteer_id: int
     shift_time: str
 
 class ShiftCreate(ShiftBase): pass
 class Shift(ShiftBase):
     id: int
+    volunteer_id: int  
     class Config: orm_mode = True

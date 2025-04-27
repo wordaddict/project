@@ -97,9 +97,12 @@
 
         const data = await response.json();
         if (response.ok) {
+          console.log('Login response:', data);
           localStorage.setItem('token', data.access_token);
           localStorage.setItem('username', data.username);
-          window.location.href = 'output.html';
+          localStorage.setItem('role', data.role);
+          localStorage.setItem('name', data.name);
+        //   window.location.href = 'output.html';
         } else {
           errorMsg.textContent = data.detail || 'Login failed. Please check your credentials.';
         }

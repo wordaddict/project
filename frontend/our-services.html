@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Services - Homeless Shelter Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background: -webkit-linear-gradient(left, #1b4571, #bf2051);
+      font-family: 'Tahoma', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 2em;
+    }
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em;
+    }
+    .logout-btn {
+      background-color: #bf2051;
+      color: #fff;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .logout-btn:hover {
+      background-color: #1b4571;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+    .service-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .service-item {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .service-item h3 {
+      margin-top: 0;
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <button class="logout-btn" onclick="window.location.href='index.html'">🏠 Home</button>
+    <button class="logout-btn" onclick="logout()">Log Out</button>
+  </div>
+
+  <h1>Our Services</h1>
+
+  <div class="service-list">
+    <div class="service-item">
+      <h3>🏠 Shelter Accommodation</h3>
+      <p>Safe and secure temporary housing for individuals and families in need.</p>
+    </div>
+    <div class="service-item">
+      <h3>🍽️ Meal Program</h3>
+      <p>Daily nutritious meals served to all guests and community members.</p>
+    </div>
+    <div class="service-item">
+      <h3>🩺 Medical Assistance</h3>
+      <p>Basic health checks, access to clinics, and referral services for further care.</p>
+    </div>
+    <div class="service-item">
+      <h3>💼 Rehabilitation & Counseling</h3>
+      <p>Support programs focusing on mental health, substance recovery, and emotional well-being.</p>
+    </div>
+    <div class="service-item">
+      <h3>🤝 Volunteer Opportunities</h3>
+      <p>Engage with our shelter through volunteer work and support initiatives.</p>
+    </div>
+    <div class="service-item">
+      <h3>🎁 Donation Coordination</h3>
+      <p>Accepting food, clothing, hygiene items, and monetary donations to support our mission.</p>
+    </div>
+  </div>
+
+  <script>
+    const name = localStorage.getItem('name');
+    const username = localStorage.getItem('username');
+
+    if (!username) {
+      alert('You must be logged in.');
+      window.location.href = 'login.html';
+    }
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>

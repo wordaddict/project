@@ -96,10 +96,26 @@ def add_donation(
 ):
     return crud.add_donation(db, donation, donor_name=current_user.name)
 
+# 🔸 New GET for shifts
+@app.get("/shifts/", response_model=List[schemas.Shift])
+def get_shifts(db: Session = Depends(get_db)):
+    return db.query(models.VolunteerShift).all()
 
 @app.post("/shifts/", response_model=schemas.Shift)
-def add_shift(shift: schemas.ShiftCreate, db: Session = Depends(get_db)):
-    return crud.add_shift(db, shift)
+def add_shift(
+    shift: schemas.ShiftCreate, 
+    db: Session = Depends(get_db),
+    current_user: models.ShelterUser = Depends(get_current_user)
+):
+    db_shift = models.VolunteerShift(
+        volunteer_id=current_user.id,  # Use ID from token here
+        shift_time=shift.shift_time
+    )
+    db.add(db_shift)
+    db.commit()
+    db.refresh(db_shift)
+    return db_shift
+
 
 @app.post("/assistances/", response_model=schemas.Assistance)
 def add_assistance(record: schemas.AssistanceCreate, db: Session = Depends(get_db), current_user: models.ShelterUser = Depends(get_current_user)):
@@ -122,7 +138,4 @@ def add_assistance(record: schemas.AssistanceCreate, db: Session = Depends(get_d
 def get_donations(db: Session = Depends(get_db)):
     return db.query(models.Donation).all()
 
-# 🔸 New GET for shifts
-@app.get("/shifts/", response_model=List[schemas.Shift])
-def get_shifts(db: Session = Depends(get_db)):
-    return db.query(models.VolunteerShift).all()
+

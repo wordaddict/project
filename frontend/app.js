@@ -14,9 +14,10 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     if (response.ok) {
         localStorage.setItem('token', data.access_token);
         localStorage.setItem('username', data.username);
+        localStorage.setItem('role', data.role);
         localStorage.setItem('name', data.name);
         
-      window.location.href = 'output.html';
+    //   window.location.href = 'output.html';
     } else {
       alert('Login failed: ' + (data.detail || 'Unknown error'));
     }
