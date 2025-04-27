@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Assistance Records - Homeless Shelter Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background: -webkit-linear-gradient(left, #1b4571, #bf2051);
+      font-family: 'Tahoma', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 2em;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .record {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
+    }
+    .logout-btn, .action-btn {
+      background-color: #bf2051;
+      color: #fff;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0.5em;
+    }
+    .logout-btn:hover, .action-btn:hover {
+      background-color: #1b4571;
+    }
+    .button-links {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+  </style>
+</head>
+<body>
+    <div style="text-align: center; margin-bottom: 1em;">
+        <p>👋 Logged in as: <strong id="loggedInName"></strong></p>
+    </div>
+      
+  <button class="logout-btn" onclick="logout()">Log Out</button>
+
+  <div class="button-links">
+    <button class="action-btn" onclick="window.location.href='add-assistance.html'">➕ Add Assistance</button>
+    <button class="action-btn" onclick="window.location.href='add-donation.html'">➕ Add Donation</button>
+    <button class="action-btn" onclick="window.location.href='add-shift.html'">➕ Add Volunteer Shift</button>
+  </div>
+
+  <h2>Assistance Records</h2>
+  <div id="assistances"></div>
+
+  <h2>Donation Records</h2>
+  <div id="donations"></div>
+
+  <h2>Volunteer Shifts</h2>
+  <div id="shifts"></div>
+
+  <script>
+    const token = localStorage.getItem('token');
+    document.getElementById('loggedInName').textContent = localStorage.getItem('username') || 'Unknown User';
+
+    if (!token) {
+      alert('You must be logged in to view this page.');
+      window.location.href = 'login.html';
+    }
+
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = 'login.html';
+    }
+
+    async function fetchData(url, containerId, formatter) {
+      try {
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          }
+        });
+        if (!response.ok) {
+          throw new Error('Not authorized or failed to fetch records.');
+        }
+        const data = await response.json();
+        displayData(containerId, data, formatter);
+      } catch (error) {
+        document.getElementById(containerId).innerHTML = `<p>${error.message}</p>`;
+      }
+    }
+
+    function displayData(containerId, records, formatter) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      if (records.length === 0) {
+        container.innerHTML = '<p>No records found.</p>';
+        return;
+      }
+      records.forEach(record => {
+        container.innerHTML += formatter(record);
+      });
+    }
+
+    function formatAssistance(record) {
+      return `
+        <div class="record">
+          <p><strong>Service:</strong> ${record.service}</p>
+          <p><strong>Notes:</strong> ${record.notes}</p>
+          <p><strong>Timestamp:</strong> ${new Date(record.timestamp).toLocaleString()}</p>
+          <p><strong>User ID:</strong> ${record.user_id}</p>
+        </div>`;
+    }
+
+    function formatDonation(record) {
+      return `
+        <div class="record">
+          <p><strong>Donor Name:</strong> ${record.donor_name}</p>
+          <p><strong>Item:</strong> ${record.item}</p>
+          <p><strong>Quantity:</strong> ${record.quantity}</p>
+          <p><strong>Timestamp:</strong> ${new Date(record.timestamp).toLocaleString()}</p>
+        </div>`;
+    }
+
+    function formatShift(record) {
+      return `
+        <div class="record">
+          <p><strong>Volunteer ID:</strong> ${record.volunteer_id}</p>
+          <p><strong>Shift Time:</strong> ${record.shift_time}</p>
+        </div>`;
+    }
+
+    fetchData('http://127.0.0.1:8000/assistances/', 'assistances', formatAssistance);
+    fetchData('http://127.0.0.1:8000/donations/', 'donations', formatDonation);
+    fetchData('http://127.0.0.1:8000/shifts/', 'shifts', formatShift);
+  </script>
+</body>
+</html>

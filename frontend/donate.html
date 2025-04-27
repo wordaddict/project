@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Donations - Homeless Shelter Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    /* Global layout */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Tahoma', sans-serif;
+      background: -webkit-linear-gradient(left, #1b4571, #bf2051);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero {
+      text-align: center;
+      padding: 3em 1em;
+      background: rgba(0,0,0,0.3);
+    }
+    .hero h1 {
+      margin-bottom: 0.3em;
+      font-size: 2em;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 0.5em auto;
+      line-height: 1.6;
+    }
+
+    /* Main Donation Content */
+    .donation-container {
+      max-width: 1000px;
+      margin: 2em auto;
+      padding: 1em;
+      color: #fff;
+    }
+    .donation-container h2 {
+      margin-top: 1em;
+      font-size: 1.5em;
+      margin-bottom: 0.5em;
+      text-align: center;
+      color: #fff;
+    }
+    .donation-container p {
+      max-width: 800px;
+      margin: 0.5em auto;
+      line-height: 1.6;
+    }
+    .donation-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      margin-top: 2em;
+      justify-content: center;
+    }
+    .donation-box {
+      background: linear-gradient(#ffffff 50%, #bf2051 50%);
+      background-size: 100% 200%;
+      background-position: 0 2.5%;
+      border-radius: 5px;
+      box-shadow: 0 0 35px rgba(0,0,0,0.12);
+      width: 300px;
+      padding: 2em;
+      text-align: center;
+      color: #000;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+    .donation-box:hover {
+      background-position: 0 100%;
+    }
+    .donation-box h3 {
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+      transition: color 0.5s;
+    }
+    .donation-box p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      transition: color 0.5s;
+    }
+    .donation-box:hover h3,
+    .donation-box:hover p {
+      color: #fff;
+    }
+
+    .icon-wrapper {
+      background-color: #1b4571;
+      margin: 0 auto;
+      font-size: 30px;
+      height: 2.5em;
+      width: 2.5em;
+      color: #fff;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: 0.5s;
+    }
+    .donation-box:hover .icon-wrapper {
+      background-color: #fff;
+      color: #1b4571;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1em;
+      margin-top: auto;
+      color: #fff;
+    }
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .donation-box {
+        width: 250px;
+      }
+      .hero h1 {
+        font-size: 1.6em;
+      }
+    }
+    @media (max-width: 500px) {
+      .donation-options {
+        flex-direction: column;
+        align-items: center;
+      }
+      .donation-box {
+        width: 80%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Your Support Makes a Difference</h1>
+    <p>
+      Every donation, whether monetary or in-kind, helps us provide shelter, meals, 
+      and critical services to those in need. Together, we can give hope and dignity 
+      to our community.
+    </p>
+  </div>
+
+  <!-- Donation Content -->
+  <div class="donation-container">
+    <h2>Ways to Donate</h2>
+    <p>
+      We greatly appreciate any form of assistance, from a small recurring donation to 
+      larger contributions or tangible goods like food, clothing, and hygiene products.
+      Below are some of the ways you can get involved.
+    </p>
+
+    <div class="donation-options">
+      <!-- Monetary Donations -->
+      <div class="donation-box">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-hand-holding-dollar"></i>
+        </div>
+        <h3>Monetary Support</h3>
+        <p>
+          Donate one-time or set up a recurring contribution to help us maintain essential services.
+        </p>
+      </div>
+
+      <!-- In-Kind Donations -->
+      <div class="donation-box">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-box"></i>
+        </div>
+        <h3>In-Kind Donations</h3>
+        <p>
+          Food, clothing, hygiene products—donate items that directly benefit shelter residents.
+        </p>
+      </div>
+
+      <!-- Fundraising or Event Donation -->
+      <div class="donation-box">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <h3>Fundraising Events</h3>
+        <p>
+          Participate in or host a fundraising event. Every dollar raised goes directly to our programs.
+        </p>
+      </div>
+    </div>
+
+    <!-- Example: Link or Info on How to Donate Online -->
+    <p style="margin-top:2em; text-align:center;">
+      <a href="https://www.example.com/donate" 
+         style="text-decoration: none; background-color:#bf2051; color:#fff; padding:0.8em 1.5em; border-radius:5px;">
+        Donate Online
+      </a>
+    </p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Homeless Shelter Management. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Font Awesome Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  </body>
+</html>

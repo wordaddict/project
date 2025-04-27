@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Volunteer Shift</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Add Volunteer Shift</h1>
+  <form id="shiftForm">
+    <input type="number" id="volunteer_id" placeholder="Volunteer ID" required />
+    <input type="text" id="shift_time" placeholder="Shift Time (e.g., Monday 9AM-12PM)" required />
+    <button type="submit">Submit</button>
+  </form>
+  <div id="message"></div>
+
+  <script>
+    const token = localStorage.getItem('token');
+    document.getElementById('shiftForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const payload = {
+        volunteer_id: parseInt(document.getElementById('volunteer_id').value),
+        shift_time: document.getElementById('shift_time').value
+      };
+      try {
+        const response = await fetch('http://127.0.0.1:8000/shifts/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+        document.getElementById('message').textContent = response.ok ? 'Shift added successfully!' : data.detail;
+      } catch (error) {
+        document.getElementById('message').textContent = 'Error connecting to server.';
+      }
+    });
+  </script>
+</body>
+</html>

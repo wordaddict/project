@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up - Homeless Shelter Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background: -webkit-linear-gradient(left, #1b4571, #bf2051);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Tahoma', sans-serif;
+      color: #fff;
+    }
+    .signup-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2em;
+      border-radius: 10px;
+      text-align: center;
+      width: 350px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .signup-container h1 {
+      margin-bottom: 1em;
+    }
+    .signup-container input, select {
+      width: 90%;
+      padding: 10px;
+      margin: 0.5em 0;
+      border: none;
+      border-radius: 5px;
+    }
+    .signup-container button {
+      padding: 0.8em 1.5em;
+      background-color: #bf2051;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1em;
+      transition: background 0.3s;
+    }
+    .signup-container button:hover {
+      background-color: #1b4571;
+    }
+    .error-message {
+      color: #ffcccc;
+      margin-top: 1em;
+      font-size: 0.9rem;
+    }
+    .back-link {
+      margin-top: 1em;
+      display: block;
+      color: #fff;
+      text-decoration: underline;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h1>Sign Up</h1>
+    <form id="signupForm">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <select id="role" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="staff">Staff</option>
+        <option value="volunteer">Volunteer</option>
+        <option value="donor">Donor</option>
+      </select>
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="error-message" id="errorMsg"></div>
+    <a href="login.html" class="back-link">← Back to Login</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('signupForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const role = document.getElementById('role').value;
+      const apiBaseUrl = window.location.hostname.includes('onrender.com')
+        ? 'https://group4-api.onrender.com'
+        : 'http://127.0.0.1:8000'; // For local testing
+
+
+      try {
+        const response = await fetch(`${apiBaseUrl}/signup`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, username, password, role })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          alert('Signup successful! You can now log in.');
+          window.location.href = 'login.html';
+        } else {
+          errorMsg.textContent = data.detail || 'Signup failed.';
+        }
+      } catch (error) {
+        errorMsg.textContent = 'Error connecting to server.';
+      }
+    });
+  </script>
+</body>
+</html>

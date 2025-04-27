@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Success Stories - Homeless Shelter Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    /* Overall page styling */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: "Tahoma", sans-serif;
+      background: -webkit-linear-gradient(left, #1b4571, #bf2051);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Container to center content */
+    .container {
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Main heading */
+    h1 {
+      margin-top: 1em;
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    /* Subtitle heading */
+    h2 {
+      font-size: 1.3em;
+      margin-bottom: 2em;
+      color: #f0f0f0;
+    }
+
+    /* Intro text or subheading paragraph */
+    .intro {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ffffff;
+      max-width: 800px;
+      margin-bottom: 2.5em;
+    }
+
+    /* The stories wrapper */
+    .stories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+    }
+
+    /* Individual story card */
+    .story-card {
+      background-color: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
+      border-radius: 8px;
+      padding: 1.5em;
+      max-width: 300px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+      text-align: left; /* Let text be left-aligned within the card */
+    }
+    .story-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Headline or name in each story */
+    .story-card h3 {
+      margin-top: 0;
+      font-size: 1.25em;
+      color: #fff;
+      margin-bottom: 0.5em;
+    }
+
+    /* Short story text */
+    .story-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #f0f0f0;
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: rgba(0,0,0,0.2);
+      text-align: center;
+      padding: 1em 0;
+      margin-top: auto;
+    }
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .story-card {
+        max-width: 90%;
+      }
+      h1 {
+        font-size: 1.75em;
+      }
+      h2 {
+        font-size: 1.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Success Stories</h1>
+    <h2>How Our Shelter is Changing Lives</h2>
+
+    <p class="intro">
+      Every individual who walks through our doors has a unique story of resilience and courage. 
+      Below are just a few glimpses into the lives that have been transformed with the support of 
+      our community, volunteers, and staff. We celebrate their achievements and invite you to 
+      learn about the real impact of our shelter’s mission.
+    </p>
+
+    <div class="stories">
+      <!-- Story 1 -->
+      <div class="story-card">
+        <h3>Maria’s Journey</h3>
+        <p>
+          After losing her job, Maria struggled to make ends meet. She found more than just a
+          roof over her head at our shelter. Through our job training and counseling
+          programs, Maria secured new employment and housing, regaining her independence.
+        </p>
+      </div>
+
+      <!-- Story 2 -->
+      <div class="story-card">
+        <h3>David’s New Start</h3>
+        <p>
+          Battling health issues, David arrived with little hope. Our on-site nursing care and
+          community health partnerships helped him stabilize. With renewed health and job
+          assistance, David is now on track to full-time employment.
+        </p>
+      </div>
+
+      <!-- Story 3 -->
+      <div class="story-card">
+        <h3>From Veteran to Volunteer</h3>
+        <p>
+          John, a military veteran, found himself without a place to call home. Our case managers
+          quickly connected him to veterans’ benefits, mental health resources, and supportive
+          housing. Today, John volunteers here, helping fellow veterans navigate their own journeys.
+        </p>
+      </div>
+      <!-- Add more stories as needed -->
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2025 Homeless Shelter Management. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

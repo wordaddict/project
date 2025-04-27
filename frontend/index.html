@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home - Homeless Shelter Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* Global layout */
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Tahoma', sans-serif;
+        background: -webkit-linear-gradient(left, #1b4571, #bf2051);
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+      }
+
+      /* Hero / Header Section */
+      .hero {
+        flex: 1;  /* pushes footer to bottom if there's little content */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2em;
+      }
+      .hero h1 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+      }
+      .hero p {
+        max-width: 600px;
+        margin-bottom: 2em;
+        line-height: 1.6;
+      }
+      .cta-button {
+        background-color: #bf2051;
+        color: #fff;
+        border: none;
+        padding: 0.8em 1.5em;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
+      .cta-button:hover {
+        background-color: #1b4571;
+      }
+
+      /* Quick Button Links */
+      .quick-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+        max-width: 1200px;
+        margin: 2em auto;
+        justify-content: center;
+      }
+      .card {
+        background: linear-gradient(#ffffff 50%, #bf2051 50%);
+        background-size: 100% 200%;
+        background-position: 0 2.5%;
+        border-radius: 5px;
+        box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
+        width: 250px;
+        padding: 2em;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.5s;
+        text-decoration: none;
+        color: #000;
+      }
+      .card:hover {
+        background-position: 0 100%;
+      }
+      .icon-wrapper {
+        background-color: #1b4571;
+        margin: 0 auto;
+        font-size: 30px;
+        height: 2.5em;
+        width: 2.5em;
+        color: #fff;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        transition: 0.5s;
+      }
+      .card:hover .icon-wrapper {
+        background-color: #ffffff;
+        color: #1b4571;
+      }
+      .card h3 {
+        margin-top: 1em;
+        font-size: 1.2em;
+        font-weight: 600;
+        transition: color 0.5s;
+      }
+      .card p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 0;
+        transition: color 0.5s;
+      }
+      .card:hover h3, 
+      .card:hover p {
+        color: #fff;
+      }
+
+      footer {
+        text-align: center;
+        color: #fff;
+        padding: 1em;
+      }
+      footer p {
+        margin: 0;
+      }
+
+      /* Responsive Tweaks */
+      @media screen and (max-width: 768px) {
+        .hero h1 {
+          font-size: 1.6em;
+        }
+        .hero p {
+          padding: 0 1em;
+        }
+        .card {
+          width: 220px;
+        }
+      }
+      @media screen and (max-width: 500px) {
+        .hero h1 {
+          font-size: 1.3em;
+        }
+        .quick-links {
+          flex-direction: column;
+          align-items: center;
+        }
+        .card {
+          width: 80%;
+          max-width: 300px;
+        }
+      }
+    
+    /* Top-right corner buttons */
+    .top-right {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .top-right a {
+      margin-left: 15px;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .login-btn {
+      background-color: #ffffff;
+      color: #1b4571;
+      border: 2px solid #1b4571;
+    }
+
+    .signup-btn {
+      background-color: #bf2051;
+      color: #fff;
+      border: 2px solid #bf2051;
+      margin-left: 10px;
+    }
+      </style>
+
+  </head>
+  <body>
+    <!-- Top-right navigation buttons -->
+    <div class="top-right">
+      <a href="login.html" class="login-btn">Login</a>
+      <a href="signup.html" class="signup-btn">Sign Up</a>
+    </div>
+
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>Welcome to Our Homeless Shelter</h1>
+      <p>
+        A safe place for those in need. We offer meals, shelter, and comprehensive 
+        services that guide individuals toward independence. Together, we can make 
+        a difference.
+      </p>
+      <!-- Volunteer Sign-Up -->
+      <a href="volunteer-form.html" class="cta-button">Become a Volunteer</a>
+    </div>
+
+    <!--Linked Card Pages-->
+    <div class="quick-links">
+      <!--Link to About-->
+      <a href="about.html" class="card">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <h3>About Us</h3>
+        <p>Learn more about our mission, staff, and the services we provide.</p>
+      </a>
+
+      <!-- Link to Services-->
+      <a href="our-services.html" class="card">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+        </div>
+        <h3>Our Services</h3>
+        <p>Discover how we help with shelter, meals, counseling, and more.</p>
+      </a>
+
+      <!--Link to Success Stories-->
+      <a href="success-stories.html" class="card">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <h3>Success Stories</h3>
+        <p>Read uplifting stories from individuals we've helped.</p>
+      </a>
+
+      <!--Link to Donate page-->
+      <a href="donate.html" class="card">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-hand-holding-dollar"></i>
+        </div>
+        <h3>Donate</h3>
+        <p>Your generosity keeps our doors open for those who need it most</p>
+      </a>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Homeless Shelter Management. All rights reserved.</p>
+    </footer>
+    
+    <!-- Font Awesome icons (if needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  </body>
+</html>

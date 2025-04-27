@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About - Homeless Shelter Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Global layout */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: "Tahoma", sans-serif;
+      background: -webkit-linear-gradient(left, #1b4571, #bf2051);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Main container */
+    .container {
+      flex: 1; 
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Heading */
+    h1 {
+      margin-top: 1em;
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    /* Subheading */
+    h2 {
+      font-size: 1.5em;
+      margin-top: 0;
+      margin-bottom: 1.5em;
+      color: #f0f0f0;
+    }
+
+    /* Paragraphs */
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #fff;
+      max-width: 800px;
+      margin-bottom: 1.5em;
+    }
+
+    /* Example "Stats" or "Highlight" section */
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      justify-content: center;
+      margin-top: 2em;
+    }
+
+    .highlight-box {
+      background: rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 1em 1.5em;
+      min-width: 200px;
+      margin: 0.5em;
+    }
+    .highlight-box h3 {
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+      color: #fffff0;
+    }
+    .highlight-box p {
+      color: #e2e2e2;
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: rgba(0,0,0,0.2);
+      text-align: center;
+      padding: 1em 0;
+      margin-top: auto;
+    }
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.75em;
+      }
+      h2 {
+        font-size: 1.25em;
+      }
+      .highlight-box {
+        min-width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>About Our Shelter</h1>
+    <h2>Who We Are and What We Do</h2>
+    <p>
+      Founded in 2021, our Homeless Shelter is dedicated to providing a safe, 
+      supportive environment for individuals and families experiencing homelessness.
+      Our mission is to offer shelter, nourishment, and a path to stability and
+      self-sufficiency. We believe that every person deserves compassion, respect,
+      and the opportunity for a fresh start.
+    </p>
+    <p>
+      Through collaboration with community partners, generous donors, and 
+      passionate volunteers, we strive to address the immediate needs of our 
+      residents while guiding them toward resources for long-term success.
+      From job training and healthcare referrals to mental health support, 
+      we take a holistic approach to transforming lives and strengthening our community.
+    </p>
+
+    <!-- Example "Stats" or "Highlights" section -->
+    <div class="highlights">
+      <div class="highlight-box">
+        <h3>500+ Lives Impacted</h3>
+        <p>Since opening our doors, we have provided shelter, meals, and support to individuals and families on their journey to stability.</p>
+      </div>
+      <div class="highlight-box">
+        <h3>Community-Focused</h3>
+        <p>Our volunteer network and local partners help us expand services, from job training to family assistance programs.</p>
+      </div>
+      <div class="highlight-box">
+        <h3>24/7 Safe Haven</h3>
+        <p>We operate around the clock to ensure our residents are safe, warm, and have access to essential resources at all times.</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2025 Homeless Shelter Management. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

@@ -16,12 +16,19 @@ def add_assistance(db: Session, record: schemas.AssistanceCreate):
     db.refresh(db_record)
     return db_record
 
-def add_donation(db: Session, donation: schemas.DonationCreate):
-    db_donation = models.Donation(**donation.dict())
+def add_donation(db: Session, donation: schemas.DonationCreate, donor_name: str):
+    db_donation = models.Donation(
+        donor_name=donor_name,                 # ✅ Automatically from current_user.name
+        item=donation.item,
+        quantity=donation.quantity,
+        timestamp=donation.timestamp
+    )
     db.add(db_donation)
     db.commit()
     db.refresh(db_donation)
     return db_donation
+
+
 
 def add_shift(db: Session, shift: schemas.ShiftCreate):
     db_shift = models.VolunteerShift(**shift.dict())

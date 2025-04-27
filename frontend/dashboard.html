@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - Shelter</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .dashboard {
+      background-color: white;
+      padding: 2em;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .dashboard h1 {
+      color: #1b4571;
+    }
+
+    .dashboard a {
+      display: inline-block;
+      margin: 1em 10px 0 10px;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+    }
+
+    .home-btn {
+      background-color: #bf2051;
+    }
+
+    .logout-btn {
+      background-color: #1b4571;
+    }
+
+    .dashboard a:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Welcome to Your Dashboard!</h1>
+    <p>You are now logged in.</p>
+    <a href="index.html" class="home-btn">Go to Homepage</a>
+    <a href="login.html" class="logout-btn">Logout</a>
+  </div>
+</body>
+</html>

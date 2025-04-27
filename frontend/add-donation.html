@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Donation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background: -webkit-linear-gradient(left, #1b4571, #bf2051);
+      font-family: 'Tahoma', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em;
+    }
+    .logout-btn {
+      background-color: #bf2051;
+      color: #fff;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .logout-btn:hover {
+      background-color: #1b4571;
+    }
+    .form-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      width: 350px;
+    }
+    .form-container h1 {
+      margin-bottom: 1em;
+    }
+    .form-container input {
+      width: 80%;
+      padding: 0.8em;
+      margin: 0.5em 0;
+      border: none;
+      border-radius: 5px;
+    }
+    .form-container button {
+      padding: 0.8em 1.5em;
+      background-color: #bf2051;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1em;
+      transition: background 0.3s;
+    }
+    .form-container button:hover {
+      background-color: #1b4571;
+    }
+    .back-btn {
+      background-color: transparent;
+      border: 2px solid #fff;
+      margin-top: 1em;
+    }
+    .back-btn:hover {
+      background-color: #fff;
+      color: #1b4571;
+    }
+    #message {
+      margin-top: 1em;
+      color: #ffcccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <p>👋 Logged in as: <strong id="loggedInName"></strong></p>
+    <button class="logout-btn" onclick="logout()">Log Out</button>
+  </div>
+
+  <div class="form-container">
+    <h1>Add Donation</h1>
+    <form id="donationForm">
+      <input type="text" id="item" placeholder="Item Donated" required />
+      <input type="number" id="quantity" placeholder="Quantity" required />
+      <input type="datetime-local" id="timestamp" required />
+      <button type="submit">Submit</button>
+    </form>
+    <div id="message"></div>
+    <button class="back-btn" onclick="window.location.href='output.html'">← Back to Records</button>
+  </div>
+
+  <script>
+    const token = localStorage.getItem('token');
+    const name = localStorage.getItem('name');
+    const username = localStorage.getItem('username');
+
+    if (!token || !username) {
+      alert('You must be logged in.');
+      window.location.href = 'login.html';
+    }
+
+    document.getElementById('loggedInName').textContent = username;
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = 'login.html';
+    }
+
+    document.getElementById('donationForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const payload = {
+        item: document.getElementById('item').value,
+        quantity: parseInt(document.getElementById('quantity').value),
+        timestamp: document.getElementById('timestamp').value
+    };
+
+      try {
+        const response = await fetch('http://127.0.0.1:8000/donations/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+        if (response.ok) {
+          document.getElementById('message').textContent = '✅ Donation added successfully!';
+          // Clear the input fields:
+          document.getElementById('item').value = '';
+          document.getElementById('quantity').value = '';
+          document.getElementById('timestamp').value = '';
+        } else {
+          document.getElementById('message').textContent = data.detail || 'Error adding donation.';
+        }
+      } catch (error) {
+        document.getElementById('message').textContent = '❌ Error connecting to server.';
+      }
+    });
+  </script>
+</body>
+</html>
