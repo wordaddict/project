@@ -15,7 +15,10 @@ app = FastAPI()
 
 # Allow requests from your frontend domain
 origins = [
-    "https://wordaddict.github.io",  # Your Render frontend URL                           
+    "https://wordaddict.github.io",  # Your Render frontend URL             
+    "https://wordaddict.github.io/",  # Your Render frontend URL
+    "https://wordaddict.github.io/project",  # Your Render frontend URL    
+    "https://wordaddict.github.io/project/",  # Your Render frontend URL               
 ]
 
 app.add_middleware(
