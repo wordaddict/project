@@ -8,24 +8,23 @@ from typing import List
 from backend.utils import create_access_token
 from datetime import timedelta
 from backend.utils import get_current_user
+from fastapi.responses import JSONResponse
+from fastapi.requests import Request
 
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
-# Allow requests from your frontend domain
-origins = [
-    "https://wordaddict.github.io",  # Your Render frontend URL             
-    "https://wordaddict.github.io/",  # Your Render frontend URL
-    "https://wordaddict.github.io/project",  # Your Render frontend URL    
-    "https://wordaddict.github.io/project/",  # Your Render frontend URL               
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[
+        "https://wordaddict.github.io",
+        "https://wordaddict.github.io/",
+        "https://wordaddict.github.io/project",
+        "https://wordaddict.github.io/project/",
+    ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["*"],  # This must include OPTIONS!
     allow_headers=["*"],
 )
 
@@ -34,6 +33,10 @@ def get_db():
     db = SessionLocal()
     try: yield db
     finally: db.close()
+
+@app.options("/{path:path}")
+async def preflight_options_handler(path: str, request: Request):
+    return JSONResponse(content={"message": "CORS Preflight OK"})
 
 @app.get("/")
 def read_root():
@@ -131,10 +134,3 @@ def add_assistance(record: schemas.AssistanceCreate, db: Session = Depends(get_d
     db.commit()
     db.refresh(db_record)
     return db_record
-
-# 🔹 New GET for donations
-@app.get("/donations/", response_model=List[schemas.Donation])
-def get_donations(db: Session = Depends(get_db)):
-    return db.query(models.Donation).all()
-
-
