@@ -66,3 +66,15 @@ This is a lightweight research-focused prototype. Not intended for production us
 ## Live URL:  https://project-group-4.onrender.com/
 
 ## Postman link: https://.postman.co/workspace/My-Workspace~62b2f8a5-e1a4-40e8-80d7-9aa208e44dad/collection/2558201-0873ed91-36dd-4a40-8d5e-fdba16734859?action=share&creator=2558201
+
+#starting the app
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn backend.main:app --reload
+
+#live url
+https://wordaddict.github.io/project
+
+#running the frontend app with python
+cd docs
+python3 -m http.server 8000
